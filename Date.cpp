@@ -32,6 +32,14 @@ public:
 		_month = d._month;
 		_day = d._day;
 	}
+	Date * operator&()
+	{
+		return this;
+	}
+	const Date *operator&()const
+	{
+		return this;
+	}
 	Date & operator++()
 	{
 		int days[] = {0, 31, 28, 31, 30, 31, 30,
