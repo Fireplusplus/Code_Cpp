@@ -42,7 +42,8 @@ public:
 	{
 		if (pStr != s.pStr)
 		{
-			--GetCnt();
+			if(0 == --GetCnt())
+				delete[] pStr;
 			pStr = s.pStr;
 			++GetCnt();
 		}
@@ -60,7 +61,6 @@ public:
 			strcpy(tmp, pStr);
 			--GetCnt();
 			pStr = tmp;
-			++GetCnt();
 		}
 		return *(pStr + index);
 	}
