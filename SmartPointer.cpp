@@ -319,7 +319,7 @@ void fun()
 void fun1()
 {
 	scopedPtr<int> ap(new int(1));
-	//scopedPtr<int> ap1 = ap; //²»ÔÊĞíµ÷ÓÃ¿½±´¹¹Ôì»ò¸³ÖµÔËËã·û,²»ÄÜÂú×ãÊ¹ÓÃÌõ¼ş
+	//scopedPtr<int> ap1 = ap; //ä¸å…è®¸è°ƒç”¨æ‹·è´æ„é€ æˆ–èµ‹å€¼è¿ç®—ç¬¦,ä¸èƒ½æ»¡è¶³ä½¿ç”¨æ¡ä»¶
 	cout << *ap << endl;
 }
 
@@ -338,7 +338,7 @@ struct Node
 		//, pPre(NULL)
 	{}
 };
-//Ñ­»·ÒıÓÃÒı·¢µÄÎÊÌâ--->ÈõÖ¸Õë
+//å¾ªç¯å¼•ç”¨å¼•å‘çš„é—®é¢˜--->å¼±æŒ‡é’ˆ
 void fun2()
 {
 	//SharedPtr<Node> p1(new Node);
