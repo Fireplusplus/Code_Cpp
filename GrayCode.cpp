@@ -1,45 +1,47 @@
-/* 
- * 1、除了最高位（左边第一位），格雷码的位元完全上下对称。
- * 比如第一个格雷码与最后一个格雷码对称（除了第一位），
- * 第二个格雷码与倒数第二个对称，以此类推。
- * 2、最小的重复单元是 0 , 1。
- */
-
 #include <iostream>
-#include <math.h>
+#include <vector>
 
 using namespace std;
 
-string * GrayCode(int n)
+class GrayCode
 {
-	string * graycode = new string[(int)pow(2, n)];
-
-	if (1 == n)
+public:
+	vector<string> getGray(int n)
 	{
-		graycode[0] = "0";
-		graycode[1] = "1";
-		return graycode;
+		// write code here
+		vector<string> v;
+		v.push_back("0");
+		v.push_back("1");
+
+		Gray(v, n - 1);
+
+		return v;
 	}
 
-	string* tail = GrayCode(n - 1);
-
-	for (int i = 0; i < (int)pow(2, n-1); i++)
+	void Gray(vector<string>& v, int n)
 	{
-		graycode[i] = "0" + tail[i];
-		graycode[(int)pow(2, n)- i - 1] = "1" + tail[i];
+		if (0 == n)
+			return;
+		int size = v.size();
+		
+		for (int i = 0; i < size; i++)
+		{
+			v.push_back(v[i]);
+		}
+
+		for (int i = 0; i < size; i++)
+		{
+			v[i].insert(v[i].begin(), '0');
+			v[size * 2 - i - 1].insert(v[size * 2 - i - 1].begin(), '1');
+		}
+		Gray(v, n - 1);
 	}
-	
-	return graycode;
-}
+};
 
 int main()
 {
-	string *str = GrayCode(3);
-
-	for (int i = 0; i < 8; i++)
-	{
-		cout<<str[i]<<endl;;
-	}
+	GrayCode g;
+	vector<string> ret = g.getGray(2);
 
 	return 0;
 }
