@@ -79,5 +79,14 @@ int main() {
         {"get", {4}},
     };
 
+    for (const auto& [opt, param] : test_case) {
+        if (opt == "get") {
+            auto val = lru.get(param.front());
+            cout << val << endl;
+        } else {
+            lru.put(param.front(), param.back());
+        }
+    }
+
     return 0;
 }
